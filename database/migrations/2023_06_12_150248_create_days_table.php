@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('days', function (Blueprint $table) {
             $table->increments('id');  // первичный ключ
 
-            $table->string('title',2);
+            $table->string('title',2)->unique();
             $table->timestamps();
         });
     }

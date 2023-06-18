@@ -13,9 +13,9 @@ return new class extends Migration
             $table->increments('id');  // первичный ключ
 
             $table->string('title',45);
-            $table->boolean("spa");
-            $table->boolean("pool");
-            $table->boolean("group");
+            $table->boolean("spa")->default(false);
+            $table->boolean("pool")->default(false);
+            $table->boolean("group")->default(false);
 
             $table->timestamps();
         });

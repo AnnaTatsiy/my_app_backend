@@ -15,9 +15,12 @@ return new class extends Migration
             $table->string('name',45);
             $table->string('patronymic',45);
 
-            $table->string('passport',10);
+            $table->string('passport',10)->unique();
 
             $table->date("birth");//Дата рождения
+
+            $table->string("mail");
+            $table->string("number");
 
             $table->string('registration',255);
             $table->timestamps();
