@@ -27,7 +27,7 @@ class CoachFactory extends Factory
             'passport' => $faker->isbn10,
             'birth' => $faker->date('Y-m-d', '2001-12-01'),
             'mail' => $faker->freeEmail,
-            'number' => $faker->tollFreePhoneNumber,
+            'number' => $faker->phoneNumber,
             'registration' => $faker->address,
 
         ];

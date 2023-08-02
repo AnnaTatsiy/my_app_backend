@@ -13,7 +13,6 @@ return new class extends Migration
             $table->increments('id');  // первичный ключ
 
             $table->string('title',2)->unique();
-            $table->timestamps();
         });
     }
 

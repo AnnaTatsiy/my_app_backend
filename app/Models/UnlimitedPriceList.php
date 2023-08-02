@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UnlimitedPriceList extends Model
 {
@@ -18,7 +19,7 @@ class UnlimitedPriceList extends Model
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"
-    public function subscription_type(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function subscription_type(): BelongsTo
     {
         return $this->belongsTo(SubscriptionType::class);
     }

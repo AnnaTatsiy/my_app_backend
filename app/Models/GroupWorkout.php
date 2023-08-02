@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class GroupWorkout extends Model
 {
@@ -17,7 +18,7 @@ class GroupWorkout extends Model
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"
-    public function schedule(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function schedule(): BelongsTo
     {
         return $this->belongsTo(Schedule::class);
     }

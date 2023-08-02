@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SignUpGroupWorkout extends Model
 {
@@ -17,12 +18,12 @@ class SignUpGroupWorkout extends Model
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"
-    public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function group_workout(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function group_workout(): BelongsTo
     {
         return $this->belongsTo(GroupWorkout::class);
     }

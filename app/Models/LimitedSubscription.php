@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class LimitedSubscription extends Model
 {
@@ -17,12 +19,12 @@ class LimitedSubscription extends Model
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"
-    public function customer(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }
 
-    public function limited_price_list(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function limited_price_list(): BelongsTo
     {
         return $this->belongsTo(LimitedPriceList::class);
     }

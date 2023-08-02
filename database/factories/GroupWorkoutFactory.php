@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Http\Helpers\Utils;
 use Faker\Generator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,7 +15,9 @@ class GroupWorkoutFactory extends Factory
         $faker = app(Generator::class);
 
         return [
-
+            'event' => Utils::randomDate((date('Y')-1).'-'.date('m').'-1',date('Y-m-d')),
+            'cancelled' => $faker->randomElements([true, false])[0],
+            'schedule_id' => $faker->numberBetween(1, 85)
         ];
     }
 }

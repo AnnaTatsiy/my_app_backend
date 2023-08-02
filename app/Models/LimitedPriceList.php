@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LimitedPriceList extends Model
 {
@@ -17,7 +18,7 @@ class LimitedPriceList extends Model
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"
-    public function coach(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function coach(): BelongsTo
     {
         return $this->belongsTo(Coach::class);
     }
