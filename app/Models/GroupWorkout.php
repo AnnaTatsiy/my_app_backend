@@ -14,7 +14,8 @@ class GroupWorkout extends Model
 
         'event',
         'cancelled',
-        'schedule_id'
+        'schedule_id',
+        'reason'
     ];
 
     // сторона "много" отношение "1:М", отношение "принадлежит"

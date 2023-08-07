@@ -3,6 +3,7 @@
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupWorkoutController;
+use App\Http\Controllers\GymController;
 use App\Http\Controllers\LimitedPriceListController;
 use App\Http\Controllers\LimitedSubscriptionController;
 use App\Http\Controllers\ScheduleController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\SignUpGroupWorkoutController;
 use App\Http\Controllers\SignUpPersonalWorkoutController;
 use App\Http\Controllers\UnlimitedPriceListController;
 use App\Http\Controllers\UnlimitedSubscriptionController;
+use App\Http\Controllers\WorkoutTypeController;
+use App\Models\WorkoutType;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,12 +39,21 @@ Route::post('/customers/edit', [CustomerController::class, 'editCustomer']);
 // поиск клиента по серии-номеру паспорта
 Route::post('/customers/select-customers-by-passport', [CustomerController::class, 'getCustomersByPassport']);
 
+// вывод всех спортзалов
+Route::get('/gyms/get-all', [GymController::class, 'getAllGyms']);
+
+Route::get('/workout-types/get-all', [WorkoutTypeController::class, 'getAllWorkoutTypes']);
+
 // получить все записи (вывод всех групповых тренировок)
 Route::get('/group-workouts/get-all', [GroupWorkoutController::class, 'getGroupWorkouts']);
 // получить все записи (вывод всех групповых тренировок) постранично
 Route::get('/group-workouts/all', [GroupWorkoutController::class, 'groupWorkouts']);
 //получить всю информацию о групповой тренировки по id
 Route::get('/group-workouts/select-by-id/{id}', [GroupWorkoutController::class, 'groupWorkoutById']);
+//редактирование тренировки - возможна только отмена
+Route::post('/group-workouts/group-workout-edit', [GroupWorkoutController::class, 'groupWorkoutEdit']);
+// получить все тренировки пройденные через фильтр
+Route::post('/group-workouts/filtered', [GroupWorkoutController::class, 'groupWorkoutsFiltered']);
 
 // получить все записи (вывести прайс лист на тренировки с тренерами) постранично
 Route::get('/limited-price-lists/all', [LimitedPriceListController::class, 'limitedPriceLists']);

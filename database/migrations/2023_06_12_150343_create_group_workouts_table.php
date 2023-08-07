@@ -14,6 +14,8 @@ return new class extends Migration
             $table->date('event');
             $table->boolean('cancelled')->default(false);
 
+            $table->string('reason',255); //причина отмены тренировки
+
             $table->unsignedInteger('schedule_id');
             $table->foreign('schedule_id')->references('id')->on('schedules');
 

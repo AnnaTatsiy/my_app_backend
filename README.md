@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Описание проекта
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Предметная область: __Фитнес-клуб__<br/>
+Стек разработки: __Laravel + React__
 
-## About Laravel
+### Описание предметной области:
+Для клиентов Фитнес клуб занимается
+продажей абонементов, предоставляет групповые тренировки, бассейн, а
+также SPA-зону. Для тренеров предоставляет спортзалы для проведения
+тренировок. Клиентом является любой человек купивший абонемент.
+Абонемент покупается на определенный период от 1 месяца до года.
+Стоимость абонемента зависит от его типа и периода действия. Типы:
+простой абонемент и абонемент с доступом к SPA-зоне и бассейну. Клиент
+может оплатить дополнительную услугу - тренировку с персональным
+фитнес тренером. Клиент может купить 8 или 12 персональных
+тренировок на месяц (оплачивается единоразово). Каждый тренер
+индивидуально выставляет стоимость своих тренировок и расписание.
+Тренеры поводят групповые тренировки за определенный оклад, (оклад
+зависит от количество проведенных групповых тренировок) который
+начисляется ежемесячно + доход с индивидуальных тренировок - процент
+за использование спортзалов (процент фиксированный для всех).
+Администратор занимается продажей абонементов, составляет
+расписание групповых тренировок, прием на работу и увольнение
+тренеров.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Описание сущностей БД: 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. О клиенте должны храниться следующие сведения: паспортные
+   данные, включая фамилию, имя, отчество, дату рождения, прописка.
+2. Сведения об абонементе включают в себя: данные о владельце,
+    период действия, тип, стоимость, (доп. Услуга персональные
+    тренировки).
+3. Сведения о тренере – это его фамилия, имя, отчество, паспортные
+   данные, стоимость 1 персональной тренировки, перечень групповых
+   и индивидуальных тренировок, которые он обязуется вести.
+4. Групповая тренировка описывается, датой проведения, клиентами,
+   которые на нее записаны, если на тренировку записано менее 4
+   человек –, тренировка отменяется. Об этом извещаются тренеры и
+   клиенты. Отмена фиксируется.
+5. Персональная тренировка описывается датой проведения, тренером
+   и клиентом.
+6. Расписание групповых тренировок включает, в себя день недели,
+   время проведения, тренера и тип тренировки, место проведения.
+7. Дополнительные сущности: типы групповых тренировок, типы
+   абонементов, спортзалы, дни недели.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Отчеты, которые планируется реализовать:
 
-## Learning Laravel
+1.  Месячный отчет о работе фитнес-клуба. В отчет должны войти
+    данные о количестве проданных абонементов, о доходе, зарплате,
+    которую требуется выплатить тренерам.
+2.  Справка о действующих абонементах и предполагаемой прибыли с
+    учетом зарплаты тренерам.
+3.  После покупки абонемента клиент получает документ, в котором
+    указывается, когда был оформлен абонемент, период действия,
+    дата окончания, стоимость, тип, информация о дополнительных
+    услугах и информация о клиенте.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Администратору могут потребоваться следующие сведения:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Абонементы клиента с данными номером-серии паспорта.
+2.  Перечень проведенных тренировок данного тренера за
+    определенный период.
+3.  Тренировки, которые были отменены.
+4. Перечень проведенных тренировок данного спортзала за
+   определенный период.
+5.  Перечень проведенных тренировок данного типа за определенный
+    период.
+6.  Перечень проведенных тренировок за определенный период.
+7. Перечень тренировок, на которые был записан клиент.
+8.  Поиск групповой тренировки по дате.
+9.  Поиск групповой тренировок по расписанию.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Клиенту предоставляется следующий функционал:
 
-## Laravel Sponsors
+1. Сколько персональных тренировок у него осталось в абонементе.
+2. Увидеть расписание доступных персональных тренировок и
+   сделать запись к своему тренеру.
+3. Запись на групповые тренировки, если зал еще не заполнен.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Тренеру предоставляется следующий функционал:
+1. Подать заявку на изменение расписания групповых тренировок
+   согласно требованиям.
+2.  Выставить свое расписание персональных тренировок и получить
+    уведомление о записи клиента.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Дополнительные возможности: 
+- _Возможно изменение информации о клиенте или тренере._
+- _Когда у абонемента заканчивается срок действия - он отправляется в
+  архив._
+- _Уведомление об отмене тренировки для клиентов и тренеров._
+- _Клиент не может записаться на персональную тренировку если
+  не имеет абонемента или в абонементе закончились тренировки._
+- _Дата групповой тренировки формируется из расписания._

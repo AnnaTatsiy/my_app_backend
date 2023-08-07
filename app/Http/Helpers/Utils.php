@@ -52,6 +52,16 @@ class Utils
         return date('Y-m-d', $val);
     }
 
+    //найти количество прошедших дней между двумя датами
+    public static function subtractingDates($start, $end): int {
+
+        $timeDiff = abs(strtotime($end) - strtotime($start));
+        $numberDays = $timeDiff/86400;  // 86400 seconds in one day
+
+        // and you might want to convert to integer
+        return intval($numberDays);
+    }
+
     //генератор случайной даты в диапазон (первый параметр дата, второй секунды)
     public static function randomDateBySeconds($start_date, $max): string {
         // Convert to timetamps

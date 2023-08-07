@@ -16,8 +16,9 @@ class GroupWorkoutFactory extends Factory
 
         return [
             'event' => Utils::randomDate((date('Y')-1).'-'.date('m').'-1',date('Y-m-d')),
-            'cancelled' => $faker->randomElements([true, false])[0],
-            'schedule_id' => $faker->numberBetween(1, 85)
+            'cancelled' => false,
+            'schedule_id' => $faker->numberBetween(1, 85),
+            'reason'=> ""
         ];
     }
 }
