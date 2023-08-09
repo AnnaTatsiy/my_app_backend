@@ -53,7 +53,7 @@ Route::get('/group-workouts/select-by-id/{id}', [GroupWorkoutController::class, 
 //редактирование тренировки - возможна только отмена
 Route::post('/group-workouts/group-workout-edit', [GroupWorkoutController::class, 'groupWorkoutEdit']);
 // получить все тренировки пройденные через фильтр
-Route::post('/group-workouts/filtered', [GroupWorkoutController::class, 'groupWorkoutsFiltered']);
+Route::get('/group-workouts/filtered/', [GroupWorkoutController::class, 'groupWorkoutsFiltered']);
 
 // получить все записи (вывести прайс лист на тренировки с тренерами) постранично
 Route::get('/limited-price-lists/all', [LimitedPriceListController::class, 'limitedPriceLists']);

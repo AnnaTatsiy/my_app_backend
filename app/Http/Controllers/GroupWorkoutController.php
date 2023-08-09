@@ -155,6 +155,14 @@ class GroupWorkoutController extends Controller
         $gym = $request->input('gym');
         $type = $request->input('type');
 
+        $date_beg = ($date_beg == "") ? null: $date_beg;
+        $date_end = ($date_end == "") ? null: $date_end;
+        $coach = ($coach == "") ? null: $coach;
+        $customer = ($customer == "") ? null: $customer;
+        $cancelled = ($cancelled == null) ? 2 : $cancelled;
+        $gym = ($gym == null) ? 0: $gym;
+        $type = ($type == null) ? 0: $type;
+
         //тренировки на которые был записан клиент
         if($customer != null){
             $customer = Customer::all()->where('passport', $customer)->first();
@@ -187,7 +195,7 @@ class GroupWorkoutController extends Controller
             $workouts = GroupWorkout::with('schedule.gym', 'schedule.workout_type', 'schedule.coach', 'schedule.day')
                 ->whereIn('id', $workouts)
                 ->orderByDesc('event')
-                ->paginate(12);
+                ->paginate(14);
         }
 
         return response()->json($workouts);

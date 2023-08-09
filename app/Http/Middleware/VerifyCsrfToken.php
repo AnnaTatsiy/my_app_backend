@@ -17,7 +17,7 @@ class VerifyCsrfToken extends Middleware
         '/customers/select-customers-by-passport',
         '/unlimited-subscriptions/add',
         '/limited-subscriptions/add',
-        '/group-workouts/group-workout-edit',
-        '/group-workouts/filtered'
+        '/group-workouts/group-workout-edit'
+
     ];
 }
