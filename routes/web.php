@@ -77,6 +77,8 @@ Route::get('/sign-up-group-workouts/select-by-workout-id/{id}', [SignUpGroupWork
 
 // получить все записи на персональные тренировки
 Route::get('/sign-up-personal-workouts/all', [SignUpPersonalWorkoutController::class, 'signUpPersonalWorkouts']);
+//получить все тренировки пройденные через фильтр
+Route::get('/sign-up-personal-workouts/filtered/', [SignUpPersonalWorkoutController::class, 'signUpPersonalWorkoutsFiltered']);
 
 // получить все записи (вывести прайс лист на безлимит абонементы)
 Route::get('/unlimited-price-lists/all', [UnlimitedPriceListController::class, 'unlimitedPriceLists']);
